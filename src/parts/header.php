@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">    
+    <link rel="stylesheet" href="<?= dist_dir() ?>css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= dist_dir() ?>css/style.min.css">
 
     <title><?= (!empty($pageTitle)) ? $pageTitle : 'titre par defaut'; ?></title>

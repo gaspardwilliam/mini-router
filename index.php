@@ -1,5 +1,7 @@
 <?php
-require_once('src/class/alto.php');
+require 'src/class/Autoloader.php';
+Autoloader::register();
+//require_once('src/class/AltoRouter.php');
 require_once('src/functions.php');
 
 $router = new AltoRouter();
@@ -43,15 +45,15 @@ if( is_array($match) ) {
     define('ICL_LANGUAGE_CODE',get_param('lang'));
     define('LANG',get_param('lang'));
     if(is_callable( $match['target'])){
-        call_user_func_array( $match['target'], $match['params'] ); 
+        call_user_func_array( $match['target'], $match['params'] );
     }elseif(file_exists(__DIR__.'/src/templates/'.$match['target'].'.php')){
         require_once('src/templates/'.$match['target'].'.php');
     }else{
         echo 'nothing';
     }
-   
-    
-	
+
+
+
 } else {
 	// no route was matched
     header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');

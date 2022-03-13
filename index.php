@@ -15,6 +15,7 @@ $router->setBasePath(BASEPATH);
 
 
 $router->map( 'GET', '/[a:lang]?/merci', 'merci','thanks');
+$router->map( 'GET', '/[a:lang]?/[*:slug]', 'displayPage','page');
 
 // map index
 $router->map( 'GET', '/[a:lang]?', 'displayHome','home');
@@ -51,7 +52,7 @@ if( is_array($match) ) {
 
     if(method_exists($templates,$match['target'])){
         
-        call_user_func_array( array($templates,$match['target']), $match['params'] );
+        call_user_func_array( array($templates,$match['target']),array() );
     }elseif(is_callable( $match['target'])){
         call_user_func_array( $match['target'], $match['params'] );
     }elseif(file_exists(__DIR__.'/src/templates/'.$match['target'].'.php')){

@@ -3,12 +3,16 @@ class loadTemplate
 {
     public $templateDir=__DIR__.'/../templates/';
 
-    public function displayHome($params){
-        pre($params);
-        $this->displayPage('home');
+    public function displayPage(){
+        global $match;       
+        pre($match);
     }
 
-    private function displayPage($template){
+    public function displayHome(){
+        $this->displayPageTemplate('home');
+    }
+
+    private function displayPageTemplate($template){
         if(file_exists($this->templateDir.$template.'.php')){
             global $router;
             require_once($this->templateDir.$template.'.php');

@@ -9,7 +9,7 @@ function add_footer_script(){?>
 $pageTitle= ('fr' == LANG) ? 'Merci' : 'bedankt';
 
 /**PAGE**/
-require_once(__DIR__.'/../parts/header.php');?>
+require_once(__DIR__.'/parts/header.php');?>
    <div class="jumbotron">
         <h1 class="display-4"><?= (LANG=="fr") ? 'Ma page merci' : 'Bedankt' ?></h1>
         
@@ -18,4 +18,4 @@ require_once(__DIR__.'/../parts/header.php');?>
         
        
 
-<?php require_once(__DIR__.'/../parts/footer.php');?>
+<?php require_once(__DIR__.'/parts/footer.php');?>

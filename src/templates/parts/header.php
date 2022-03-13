@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="<?= ICL_LANGUAGE_CODE ?>">
+<html lang="<?= LANG ?>">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">

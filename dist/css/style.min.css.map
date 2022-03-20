@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../../src/scss/style.scss"
-    ],
-    "names": [],
-    "file": "style.min.css"
-}
+{"version":3,"sources":["../../src/scss/style.scss"],"names":[],"mappings":"AAAA,KACI,aAAA,CACA,gCAAA,CAEJ,kBACI,eAAA,CAGJ,WACI,cAAA,CACA,UAAA,CACA,gBAAA,CACA,WAAA","file":"style.min.css"}

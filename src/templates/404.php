@@ -6,19 +6,14 @@ function add_header_script(){?>
 function add_footer_script(){?>
 <?php }
 
-$template->setTitle('Merci');
+$pageTitle= ('fr' == LANG) ? '404' : '404';
 
 /**PAGE**/
-require_once(__DIR__.'/parts/header.php');
-require_once(__DIR__.'/parts/nav.php');
-
-?>
-
+require_once(__DIR__.'/parts/header.php');?>
 <div id="main">
     <div class="container">
-        <h1>Merci</h1>
+        <h1>404</h1>
     </div>    
-</div>     
-       
+</div>
 
 <?php require_once(__DIR__.'/parts/footer.php');?>

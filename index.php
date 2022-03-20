@@ -13,12 +13,14 @@ $templates=new loadTemplate();
 define('BASEPATH','/mini-router');
 $router->setBasePath(BASEPATH);
 
-
-$router->map( 'GET', '/[a:lang]?/merci', 'merci','thanks');
-$router->map( 'GET', '/[a:lang]?/[*:slug]', 'displayPage','page');
-
+$router->addMatchTypes(array('lang' => '[a-z]{2}'));
 // map index
-$router->map( 'GET', '/[a:lang]?', 'displayHome','home');
+// $router->map( 'GET', '/[a:lang]?', 'displayPage','home');
+// $router->map( 'GET', '/[a:lang]?/merci', 'merci','thanks');
+
+$router->map( 'GET', '/[lang:lang]?/[*:slug]?', 'displayPage','page');
+$router->map( 'GET', '/[lang:lang]?/[*:cat]/[*:slug]', 'displayPage','tax');
+
 
 
 
@@ -28,22 +30,14 @@ $match = $router->match();
 // call closure or throw 404 status
 if( is_array($match) ) {
 
-    /* if(!empty($match['params']['lang'])){
-        if(in_array($match['params']['lang'],array('fr','nl'))){
-            define('ICL_LANGUAGE_CODE',$match['params']['lang']);
-            define('LANG',$match['params']['lang']);
-        }else{
-            header('Location: '.$router->generate('home',array('lang'=>'fr')));
-            exit;
-        }
-    }else{
-        define('ICL_LANGUAGE_CODE','fr');
-        define('LANG','fr');
-    } */
+   
 
     //redirige vers param langue si pas défini
     if(empty($match['params']['lang'])||!in_array($match['params']['lang'],array('fr','nl'))){
-        header('Location: '.$router->generate($match['name'],array('lang'=>'fr')));
+       
+        $newParams=$match['params'];
+        $newParams['lang']='fr';
+        header('Location: '.$router->generate($match['name'],$newParams));
         exit;
     }
 

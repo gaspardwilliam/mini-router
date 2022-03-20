@@ -5,11 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?= dist_dir() ?>css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@400;900&display=swap" rel="stylesheet">
+  
     <link rel="stylesheet" href="<?= dist_dir() ?>css/style.min.css">
 
-    <title><?= (!empty($pageTitle)) ? $pageTitle : 'titre par defaut'; ?></title>
+    <title><?= $template->title ?></title>
     <?php 
     if(function_exists ( 'add_header_script' )){
         add_header_script();
@@ -18,14 +20,5 @@
     ?>
   </head>
   <body>
-  <nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Navbar</a>    
-      <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link active" href="<?= (LANG=="fr") ? BASEPATH.'/nl' : BASEPATH.'/fr' ?>"><?= (LANG=="fr") ? 'NL' : 'FR' ?></a>      
-      </div>
-    </div>
-    
-    
-  </nav>
+
  

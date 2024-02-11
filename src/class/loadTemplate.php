@@ -6,15 +6,17 @@ class loadTemplate
 
     public function displayPage(){
         global $match;       
-        $slug=$match['params']['slug']??'home';  
+        $slug=(!empty($match['params']['slug']))?'pages/'.$match['params']['slug']:'pages/home';  
        
-        $this->displayPageTemplate($slug);
-        
+        $this->displayPageTemplate($slug);        
     }
 
-    public function displayHome(){
-        $this->displayPageTemplate('home');
+    public function displayAdmin(){
+        global $match;       
+        $slug=(!empty($match['params']['slug']))?'admin/admin-'.$match['params']['slug']:'admin/admin';        
+        $this->displayPageTemplate($slug);
     }
+
     public function setTitle($title){
        $this->title=$title;
     }

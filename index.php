@@ -18,8 +18,8 @@ $router->addMatchTypes(array('lang' => '[a-z]{2}'));
 // $router->map( 'GET', '/[a:lang]?', 'displayPage','home');
 // $router->map( 'GET', '/[a:lang]?/merci', 'merci','thanks');
 
-$router->map( 'GET', '/[lang:lang]?/[*:slug]?', 'displayPage','page');
-$router->map( 'GET', '/[lang:lang]?/[*:cat]/[*:slug]', 'displayPage','tax');
+$router->map( 'GET', '/[lang:lang]?/admin/[*:slug]?/', 'displayAdmin','admin');
+$router->map( 'GET', '/[lang:lang]?/[*:slug]?/', 'displayPage','page');
 
 
 
@@ -28,13 +28,10 @@ $router->map( 'GET', '/[lang:lang]?/[*:cat]/[*:slug]', 'displayPage','tax');
 $match = $router->match();
 
 // call closure or throw 404 status
-if( is_array($match) ) {
-
-   
+if( is_array($match) ) {   
 
     //redirige vers param langue si pas défini
-    if(empty($match['params']['lang'])||!in_array($match['params']['lang'],array('fr','nl'))){
-       
+    if(in_array($match['name'],['page'])&&empty($match['params']['lang'])||!in_array($match['params']['lang'],array('fr','nl'))){       
         $newParams=$match['params'];
         $newParams['lang']='fr';
         header('Location: '.$router->generate($match['name'],$newParams));
@@ -44,15 +41,15 @@ if( is_array($match) ) {
     define('ICL_LANGUAGE_CODE',get_param('lang'));
     define('LANG',get_param('lang'));
 
-    if(method_exists($templates,$match['target'])){
-        
+    if(method_exists($templates,$match['target'])){        
         call_user_func_array( array($templates,$match['target']),array() );
     }elseif(is_callable( $match['target'])){
         call_user_func_array( $match['target'], $match['params'] );
     }elseif(file_exists(__DIR__.'/src/templates/'.$match['target'].'.php')){
         require_once('src/templates/'.$match['target'].'.php');
     }else{
-        echo 'nothing';
+        header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+    echo 'no route found';
     }
 
 

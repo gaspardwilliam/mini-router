@@ -1,10 +1,10 @@
 <?php
-/**CONFIGURATION**/
-function add_header_script(){?>
-<?php }
-
-function add_footer_script(){?>
-<?php }
+add_action('header',function(){
+  
+});
+add_action('footer',function(){
+  
+});
 
 
 $template->setTitle('Accueil');

@@ -1,13 +1,14 @@
 <?php
-/**CONFIGURATION**/
-function add_header_script(){?>
-<?php }
+add_action('header',function(){
+  
+});
+add_action('footer',function(){
+  
+});
 
-function add_footer_script(){?>
-<?php }
 
 
-$template->setTitle('Accueil');
+$template->setTitle('Admin');
 /**PAGE**/
 require_once(__DIR__.'/../parts/header.php');
 require_once(__DIR__.'/../parts/nav.php');

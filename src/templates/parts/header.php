@@ -14,9 +14,7 @@
 
     <title><?= $template->title ?></title>
     <?php 
-    if(function_exists ( 'add_header_script' )){
-        add_header_script();
-    }
+    do_action('header');
    
     ?>
   </head>
